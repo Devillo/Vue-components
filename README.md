@@ -1,4 +1,4 @@
-# vue-webpack-simple-template
+# vue-components
 
 > A Vue.js project
 
