@@ -1,13 +1,47 @@
 <template>
-  <div :class="textFieldClasses">
-    <label v-if='floatingLabelText' :class="textFieldLabelClasses">{{ floatingLabelText }}</label>
-    <div :class="classNames.textFieldNameClass">{{ hintText }}</div>
-    <input :class="classNames.textFieldInputClass" v-model="textValue" :disabled="disabled" @blur="onBlur" @focus="onFocus" @compositionstart="compositionstart"/>
-    <div>
-      <hr :class="classNames.textFieldUnderlineClass"/>
-      <hr v-if="underlineShow" :class="classNames.textFieldUnderlineFocusClass"/>
+  <div :class="textFieldClasses" :style="style">
+    <label
+      v-if='floatingLabelText'
+      :style="[textFieldLabelStyles, floatingLabelStyle]"
+      :class="textFieldLabelClasses">
+      {{ floatingLabelText }}
+    </label>
+    <div
+      :style="hintStyle"
+      :class="classNames.textFieldNameClass">
+      {{ hintText }}
     </div>
-    <div :class="classNames.textFieldErrorTextClass"></div>
+    <input
+      v-if="type==='text'"
+      :id="id"
+      type="text"
+      :style="inputStyle"
+      :class="classNames.textFieldInputClass"
+      :name="name"
+      v-model="textValue"
+      :disabled="disabled"
+      @blur="onBlur"
+      @focus="onFocus"
+      @compositionstart="compositionstart"/>
+    <input
+      v-else
+      :id="id"
+      type="password"
+      :style="inputStyle"
+      :class="classNames.textFieldInputClass"
+      :name="name"
+      v-model="textValue"
+      :disabled="disabled"
+      @blur="onBlur"
+      @focus="onFocus"
+      @compositionstart="compositionstart"/>
+    <div>
+      <hr :style="[underlineDisabledStyles, underlineStyle]" :class="classNames.textFieldUnderlineClass"/>
+      <hr :style="[underlineFocusStyle, underlineStyle]" v-if="underlineShow" :class="classNames.textFieldUnderlineFocusClass"/>
+    </div>
+    <div :class="classNames.textFieldErrorTextClass">
+      <slot name="error"></slot>
+    </div>
   </div>
 </template>
 
@@ -35,13 +69,10 @@
     name: 'textField',
     props: {
       className: String,
-      defaultValue: [String, Number],
       disabled: {
         type: Boolean,
         default: false
       },
-      errorStyle: Object,
-      errorText: String,
       floatingLabelFixed: {
         type: Boolean,
         default: false
@@ -154,6 +185,12 @@
             [TEXTFIELD_LABEL_FIXED]: this.floatingLabelFixed && (!this.dataValue || this.dataValue === '') && !this.active
           }
         ]
+      },
+      textFieldLabelStyles: function() {
+        return this.active || this.dataValue != "" ? this.floatingLabelFocusStyle : this.floatingLabelShrinkStyle
+      },
+      underlineDisabledStyles: function() {
+        return this.disabled ? this.underlineDisabledStyle : {}
       }
     }
   }

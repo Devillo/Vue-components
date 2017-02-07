@@ -26,10 +26,14 @@
     </text-field>
     <br>
     <text-field
-      disabled
+      :floatingLabelText="textFieldOne.floatingLabelText"
       :hintText="textFieldOne.hintText"
       :value="textFieldOne.value"
       :floatingLabelFixed="textFieldOne.floatingLabelFixed"
+      :floatingLabelFocusStyle="textFieldOne.floatingLabelFocusStyle"
+      :floatingLabelShrinkStyle="textFieldOne.floatingLabelShrinkStyle"
+      :floatingLabelStyle='{"font-weight": "800"}'
+      :hintStyle='{"color": "red"}'
       @onChange="onChange">
     </text-field>
     <br>
@@ -37,9 +41,11 @@
       :floatingLabelText="textFieldOne.floatingLabelText"
       disabled
       :hintText="textFieldOne.hintText"
+      :underlineDisabledStyle='{"border-bottom-color": "red"}'
       value=""
       :floatingLabelFixed="textFieldOne.floatingLabelFixed"
       @onChange="onChange">
+      <div slot="error">aSASDDA</div>
     </text-field>
   </div>
 </template>
@@ -55,7 +61,13 @@
           floatingLabelText: 'My Name',
           hintText: 'Default',
           value: 'YMH',
-          floatingLabelFixed: true
+          floatingLabelFixed: true,
+          floatingLabelFocusStyle: {
+            "color": "red"
+          },
+          floatingLabelShrinkStyle: {
+            "color": "blue"
+          }
         }
       }
     },

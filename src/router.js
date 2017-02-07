@@ -37,6 +37,11 @@ const router = new VueRouter({
       name: 'datePicker',
       component: require('./app/datePicker/datePicker')
     },
+    {
+      path: '/dialog',
+      name: 'dialog',
+      component: require('./app/dialog/dialog')
+    },
   ]
 })
 

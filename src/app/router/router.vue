@@ -6,6 +6,7 @@
     <router-link :to="{ name: 'flatButton' }" tag="li" class="side-nav-item">Flat Button</router-link>
     <router-link :to="{ name: 'textField' }" tag="li" class="side-nav-item">Text Field</router-link>
     <router-link :to="{ name: 'datePicker' }" tag="li" class="side-nav-item">Date Picker</router-link>
+    <router-link :to="{ name: 'dialog' }" tag="li" class="side-nav-item">Dialog</router-link>
   </ul>
 </template>
 
