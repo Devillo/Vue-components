@@ -1,5 +1,8 @@
 <template>
-  <div :class="textFieldClasses" :style="style">
+  <div
+    :class="textFieldClasses"
+    :style="style"
+    @click.stop="onClick">
     <label
       v-if='floatingLabelText'
       :style="[textFieldLabelStyles, floatingLabelStyle]"
@@ -149,6 +152,9 @@
         if(this.dataValue === '') {
           this.nameHide = true
         }
+      },
+      onClick() {
+        this.$emit("onClick")
       }
     },
     computed: {

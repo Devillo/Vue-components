@@ -1,5 +1,15 @@
-<template>
-  <DatePicker :hintText="aaaa"/>
+<template lang="pug">
+div(class="dataPickers")
+  date-picker(
+    :hintText="dataPickers[0].hintText",
+  )
+  date-picker(
+    :hintText="dataPickers[1].hintText",
+  )
+  date-picker(
+    :hintText="dataPickers[2].hintText",
+    disabled
+  )
 </template>
 
 <script>
@@ -9,7 +19,17 @@
     name: 'datePickerExample',
     data() {
       return {
-        aaaa: 'aaaaaaa'
+        dataPickers: [
+          {
+            hintText: 'Portrait Dialog'
+          },
+          {
+            hintText: 'Landscape Dialog'
+          },
+          {
+            hintText: 'Disabled Dialog'
+          }
+        ]
       }
     },
     components: {
@@ -17,3 +37,10 @@
     }
   }
 </script>
+
+<style lang="less">
+.dataPickers > div {
+  float: left;
+  clear: both;
+}
+</style>

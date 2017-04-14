@@ -21,6 +21,7 @@ multiLine | Boolean | false | 暂无
 name | String | | input name
 type | String ['text', 'password'] | text | input type
 onChange | Function | | input change 回调事件.参数为当前value
+onClick | Function | | 绑定在root上的click事件,为了某些组件只需要点击事件而不需要焦点
 rows | Number | 1 | 暂无
 rowsMax | Number | | 暂无
 textareaStyle | Object | | 暂无
